@@ -159,7 +159,7 @@ const AddSublet = () => {
             "/" +
             imageRef.fullPath;
           console.log(imageLink);
-          // await setDoc(docRef, { imageLink });
+          await updateDoc(docRef, { imageLink });
         } catch (error) {
           console.log(error);
         }

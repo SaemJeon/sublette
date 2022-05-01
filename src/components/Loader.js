@@ -78,12 +78,12 @@ function RenderData({ dataList }) {
       {/* <img src={imgList[idx]} key={idx}/>
         <div>{item.bathroom}</div> */}
       <Card sx={{ maxWidth: 345 }}>
-        {/* <CardMedia
+        <CardMedia
           component="img"
           alt="green iguana"
           height="140"
-          image="${imgListData[idx][0]}"
-        /> */}
+          image={item.imageLink}
+        />
         <CardContent>
           <Typography gutterBottom variant="body2" component="div">
             {item.value}
