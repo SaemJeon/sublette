@@ -93,18 +93,40 @@ const AddSublet = () => {
     });
 
   async function handleSubmit() {
-    console.log(price);
-    console.log(negotiable);
-    console.log(pet);
-    console.log(furnished);
-    console.log(bedroom);
-    console.log(bathroom);
-    console.log(detail);
-    console.log(images);
-    console.log(geo);
+    // console.log(price);
+    // console.log(negotiable);
+    // console.log(pet);
+    // console.log(furnished);
+    // console.log(bedroom);
+    // console.log(bathroom);
+    // console.log(detail);
+    // console.log(images);
+    // console.log(geo);
 
     try {
       const uid = authService.currentUser.uid;
+
+      const convertedFrom = new Date(fromDate);
+      const formattedFrom =
+        convertedFrom.getMonth() +
+        1 +
+        "/" +
+        convertedFrom.getDate() +
+        "/" +
+        convertedFrom.getFullYear();
+
+      console.log(formattedFrom);
+
+      const convertedTo = new Date(toDate);
+      const formattedTo =
+        convertedTo.getMonth() +
+        1 +
+        "/" +
+        convertedTo.getDate() +
+        "/" +
+        convertedTo.getFullYear();
+
+      console.log(formattedTo);
 
       const docRef = await addDoc(collection(dbService, "listings"), {
         value,
@@ -114,9 +136,11 @@ const AddSublet = () => {
         bedroom,
         bathroom,
         detail,
+        formattedFrom,
+        formattedTo,
         geo,
         uid,
-        createdAt : Date.now(),
+        createdAt: Date.now(),
       });
 
       const docId = docRef.id;
@@ -129,6 +153,13 @@ const AddSublet = () => {
           await uploadBytes(imageRef, image).then(() => {
             console.log("uploaded");
           });
+          const imageLink =
+            "https://storage.googleapis.com/" +
+            imageRef.bucket +
+            "/" +
+            imageRef.fullPath;
+          console.log(imageLink);
+          // await setDoc(docRef, { imageLink });
         } catch (error) {
           console.log(error);
         }
