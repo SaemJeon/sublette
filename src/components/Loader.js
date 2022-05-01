@@ -8,6 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import styles from '../css/Loader.module.css'
 
 const Loader = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -74,7 +75,7 @@ const Loader = () => {
 // No order is given to check which belongs to which so we will now put a restriction to make only one picture upload per item.
 function RenderData({ dataList }) {
   const data = dataList.map((item, idx) => (
-    <div>
+    <div className={styles.container}>
       {/* <img src={imgList[idx]} key={idx}/>
         <div>{item.bathroom}</div> */}
       <Card sx={{ maxWidth: 345 }}>

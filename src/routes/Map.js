@@ -1,5 +1,6 @@
 import GMap from "./GMap";
 import React, { useState, useEffect } from "react";
+import styles from "../css/Map.module.css";
 
 // load google map script
 const loadGoogleMapScript = (callback) => {
@@ -26,10 +27,10 @@ const Map = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div className={styles.body}>
       <br />
       <br />
-      {!loadMap ? <div>Loading...</div> : <GMap />}
+      {!loadMap ? <div>Loading...</div> : <GMap className={styles.map}/>}
     </div>
   );
 };

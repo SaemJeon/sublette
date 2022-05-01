@@ -1,0 +1,34 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchBar {
+    margin: 2rem;
+    padding: 1rem;
+}
+.formcontrol {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.searchAmount {
+    align-self: center;
+    margin-left: 1rem;
+}
+
+.numberofrooms {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.button {
+    font-size: 2rem;
+}
+
+.checkbox {
+    display: flexbox;
+    flex-direction: row;
+}

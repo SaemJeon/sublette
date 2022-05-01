@@ -20,6 +20,9 @@ import Button from "@mui/material/Button";
 import { addDoc, collection, setDoc, doc, updateDoc } from "firebase/firestore";
 import { dbService, authService, storage } from "../fbase";
 import { ref, uploadBytes } from "firebase/storage";
+import styles from "../css/AddSublet.module.css";
+import { style } from "@mui/system";
+
 
 const AddSublet = () => {
   const [fromDate, setFromDate] = useState(null);
@@ -159,7 +162,7 @@ const AddSublet = () => {
             "/" +
             imageRef.fullPath;
           console.log(imageLink);
-          await updateDoc(docRef, { imageLink });
+          // await setDoc(docRef, { imageLink });
         } catch (error) {
           console.log(error);
         }
@@ -170,8 +173,8 @@ const AddSublet = () => {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.body}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <TextField
           value={value}
           onChange={handleInput}
@@ -180,6 +183,7 @@ const AddSublet = () => {
           label="Address"
           required
           fullWidth
+          className={styles.searchBar}
         />
         {/* We can use the "status" to decide whether we should display the dropdown or not */}
         {status === "OK" && <ul>{renderSuggestions()}</ul>}
@@ -206,8 +210,8 @@ const AddSublet = () => {
           />
         </LocalizationProvider>
 
-        <FormControl fullWidth sx={{ m: 1 }}>
-          <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+        <FormControl fullWidth sx={{ m: 1 }} className={styles.formcontrol}>
+          <InputLabel htmlFor="outlined-adornment-amount" className={styles.searchAmount}>Amount</InputLabel>
           <OutlinedInput
             id="outlined-adornment-amount"
             value={price}
@@ -217,36 +221,42 @@ const AddSublet = () => {
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
             label="Amount"
           />
-          <FormControlLabel
-            control={<Checkbox />}
+
+        
+
+          <FormControlLabel className={styles.checkbox}
+            control={<Checkbox  className={styles.form}/>}
             label="Negotiable?"
             value={negotiable}
             onChange={(event) => {
               setNegotiable(event.target.checked);
             }}
-          />
+            />
         </FormControl>
-
-        <FormControlLabel
-          control={<Checkbox />}
+        <FormGroup className={styles.formcontrol}>
+        <FormControlLabel className={styles.formcontrol}
+          control={<Checkbox className={styles.form}/>}
           label="Pet Allowed?"
           value={pet}
           onChange={(event) => {
             setPet(event.target.checked);
           }}
-        />
+          />
 
-        <FormControlLabel
-          control={<Checkbox />}
+        <FormControlLabel className={styles.formcontrol}
+          control={<Checkbox  className={styles.form}/>}
           label="Furnished?"
           value={furnished}
           onChange={(event) => {
             setFurnished(event.target.checked);
           }}
-        />
+          />
 
-        <FormControl sx={{ width: "25ch" }}>
-          <TextField
+          </FormGroup>
+
+          <FormGroup className={styles.numberofroom}>
+        <FormControl sx={{ width: "25ch" }} className={styles.formcontrol}>
+          <TextField 
             id="outlined-number"
             label="Number of bedrooms"
             type="number"
@@ -261,7 +271,7 @@ const AddSublet = () => {
           />
         </FormControl>
 
-        <FormControl sx={{ width: "25ch" }}>
+        <FormControl sx={{ width: "25ch" }} className={styles.formcontrol}>
           <TextField
             id="outlined-number"
             label="Number of bathrooms"
@@ -276,7 +286,7 @@ const AddSublet = () => {
             InputProps={{ inputProps: { min: "0", max: "10", step: "1" } }}
           />
         </FormControl>
-
+        </FormGroup>
         <FormControl sx={{ width: "100ch" }}>
           <TextField
             id="outlined-multiline-static"
@@ -298,11 +308,11 @@ const AddSublet = () => {
           multiple
         />
 
-        <Button variant="outlined" type="submit">
+        <Button variant="outlined" type="submit" className={styles.button}>
           Submit
         </Button>
       </form>
-    </>
+    </div>
   );
 };
 

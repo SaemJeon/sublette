@@ -1,0 +1,15 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.items {
+    margin: 3rem;
+    border-radius: 2rem;
+    border : 1px solid;
+    padding: 4rem;
+
+}

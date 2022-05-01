@@ -14,6 +14,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import styles from "../css/Profile.module.css";
 
 const Profile = () => {
   const uid = authService.currentUser.uid;
@@ -41,7 +42,7 @@ const Profile = () => {
 
 function RenderData({ dataList }) {
   const data = dataList.map((item, idx) => (
-    <div>
+    <div className={styles.body}>
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
