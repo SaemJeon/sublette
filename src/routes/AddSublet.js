@@ -17,6 +17,8 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
+import { addDoc, collection, setDoc, doc } from "firebase/firestore";
+import { dbService, authService } from "../fbase";
 
 const AddSublet = () => {
   const [fromDate, setFromDate] = useState(null);
@@ -87,7 +89,7 @@ const AddSublet = () => {
       );
     });
 
-  const handleSubmit = () => {
+  async function handleSubmit() {
     console.log(price);
     console.log(negotiable);
     console.log(pet);
@@ -96,7 +98,23 @@ const AddSublet = () => {
     console.log(bathroom);
     console.log(detail);
     console.log(images);
-  };
+    try {
+      const uid = authService.currentUser.uid;
+      const docRef = await addDoc(collection(dbService, "listings"), {
+        value,
+        price,
+        negotiable,
+        furnished,
+        bedroom,
+        bathroom,
+        detail,
+        // images,
+        uid,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
