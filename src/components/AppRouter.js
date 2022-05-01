@@ -1,18 +1,27 @@
 import React from 'react'
-import Home from '../pages/Home.js';
-import Auth from '../pages/Auth.js';
-import {HashRouter as Router, Route, Routes} from 'react-router-dom';
+import Home from '../routes/Home.js';
+import Auth from '../routes/Auth.js';
+import {HashRouter as Router, Route, Routes, Redirect} from 'react-router-dom';
+import Navigation from './Navigation.js'
+import Profile from './Profile.js'
 
 function AppRouter({ isLoggedIn }) {
   return (
     <div>
         <Router>
+            {isLoggedIn && <Navigation/>}
             <Routes>
                 {isLoggedIn ?
+                <>
                 <Route exact path='/' element={<Home/>}>
                 </Route> 
-                : <Route exact path='/' element={<Auth/>}>
+                <Route exact path = '/profile' element={<Profile/>}></Route>
+                </>
+                :
+                <> 
+                <Route exact path='/' element={<Auth/>}>
                 </Route>
+                </>
                 }
             </Routes>
         </Router>

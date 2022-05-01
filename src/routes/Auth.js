@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
-import { authService } from '../components/fbase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { authService } from '../fbase';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Auth = () => {
   // Email
@@ -23,7 +23,6 @@ const Auth = () => {
         }
         // No error message displayed
         setError(false);
-      console.log(data)
     }
     catch (error) {
       setError(true);
@@ -42,6 +41,24 @@ const Auth = () => {
     }
   }
 
+  function toggleAccount() {
+    setnewAccount((prev) => !prev);
+  }
+
+  // Authenticate with Google
+  async function authWithGoogle() {
+    let provider;
+    try {
+      provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(authService, provider);
+      console.log(result);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+    }
+    catch(error) {
+      console.log(error);
+    }
+}
+
   return (
     <div>
       <form onSubmit={clickedSubmit}>
@@ -50,7 +67,10 @@ const Auth = () => {
         <input type="submit" value = {newAccount? "Create Account" : "Sign In"}/> 
       </form>
       <div>
-        <button>Continue with Google</button>
+        <button onClick={authWithGoogle}>Continue with Google</button>
+      </div>
+      <div>
+        <button onClick={toggleAccount}>{newAccount ? "Have an account?" : "First time user?"}</button>
       </div>
       {errorBool ? <div>{errorMsg}</div> : <></>}
     </div>
