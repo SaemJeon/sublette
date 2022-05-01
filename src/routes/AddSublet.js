@@ -23,7 +23,6 @@ import { ref, uploadBytes } from "firebase/storage";
 import styles from "../css/AddSublet.module.css";
 import { style } from "@mui/system";
 
-
 const AddSublet = () => {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
@@ -162,7 +161,7 @@ const AddSublet = () => {
             "/" +
             imageRef.fullPath;
           console.log(imageLink);
-          // await setDoc(docRef, { imageLink });
+          await updateDoc(docRef, { imageLink });
         } catch (error) {
           console.log(error);
         }
@@ -211,7 +210,12 @@ const AddSublet = () => {
         </LocalizationProvider>
 
         <FormControl fullWidth sx={{ m: 1 }} className={styles.formcontrol}>
-          <InputLabel htmlFor="outlined-adornment-amount" className={styles.searchAmount}>Amount</InputLabel>
+          <InputLabel
+            htmlFor="outlined-adornment-amount"
+            className={styles.searchAmount}
+          >
+            Amount
+          </InputLabel>
           <OutlinedInput
             id="outlined-adornment-amount"
             value={price}
@@ -222,70 +226,70 @@ const AddSublet = () => {
             label="Amount"
           />
 
-        
-
-          <FormControlLabel className={styles.checkbox}
-            control={<Checkbox  className={styles.form}/>}
+          <FormControlLabel
+            className={styles.checkbox}
+            control={<Checkbox className={styles.form} />}
             label="Negotiable?"
             value={negotiable}
             onChange={(event) => {
               setNegotiable(event.target.checked);
             }}
-            />
+          />
         </FormControl>
         <FormGroup className={styles.formcontrol}>
-        <FormControlLabel className={styles.formcontrol}
-          control={<Checkbox className={styles.form}/>}
-          label="Pet Allowed?"
-          value={pet}
-          onChange={(event) => {
-            setPet(event.target.checked);
-          }}
-          />
-
-        <FormControlLabel className={styles.formcontrol}
-          control={<Checkbox  className={styles.form}/>}
-          label="Furnished?"
-          value={furnished}
-          onChange={(event) => {
-            setFurnished(event.target.checked);
-          }}
-          />
-
-          </FormGroup>
-
-          <FormGroup className={styles.numberofroom}>
-        <FormControl sx={{ width: "25ch" }} className={styles.formcontrol}>
-          <TextField 
-            id="outlined-number"
-            label="Number of bedrooms"
-            type="number"
-            value={bedroom}
+          <FormControlLabel
+            className={styles.formcontrol}
+            control={<Checkbox className={styles.form} />}
+            label="Pet Allowed?"
+            value={pet}
             onChange={(event) => {
-              setBedroom(event.target.value);
+              setPet(event.target.checked);
             }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            InputProps={{ inputProps: { min: "0", max: "10", step: "1" } }}
           />
-        </FormControl>
 
-        <FormControl sx={{ width: "25ch" }} className={styles.formcontrol}>
-          <TextField
-            id="outlined-number"
-            label="Number of bathrooms"
-            type="number"
-            value={bathroom}
+          <FormControlLabel
+            className={styles.formcontrol}
+            control={<Checkbox className={styles.form} />}
+            label="Furnished?"
+            value={furnished}
             onChange={(event) => {
-              setBathroom(event.target.value);
+              setFurnished(event.target.checked);
             }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            InputProps={{ inputProps: { min: "0", max: "10", step: "1" } }}
           />
-        </FormControl>
+        </FormGroup>
+
+        <FormGroup className={styles.numberofroom}>
+          <FormControl sx={{ width: "25ch" }} className={styles.formcontrol}>
+            <TextField
+              id="outlined-number"
+              label="Number of bedrooms"
+              type="number"
+              value={bedroom}
+              onChange={(event) => {
+                setBedroom(event.target.value);
+              }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              InputProps={{ inputProps: { min: "0", max: "10", step: "1" } }}
+            />
+          </FormControl>
+
+          <FormControl sx={{ width: "25ch" }} className={styles.formcontrol}>
+            <TextField
+              id="outlined-number"
+              label="Number of bathrooms"
+              type="number"
+              value={bathroom}
+              onChange={(event) => {
+                setBathroom(event.target.value);
+              }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              InputProps={{ inputProps: { min: "0", max: "10", step: "1" } }}
+            />
+          </FormControl>
         </FormGroup>
         <FormControl sx={{ width: "100ch" }}>
           <TextField
