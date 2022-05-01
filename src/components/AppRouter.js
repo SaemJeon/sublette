@@ -10,6 +10,7 @@ import {
 import Navigation from "./Navigation.js";
 import Profile from "./Profile.js";
 import AddSublet from "../routes/AddSublet.js";
+import Loader from "./Loader.js";
 
 function AppRouter({ isLoggedIn }) {
   return (
@@ -22,6 +23,7 @@ function AppRouter({ isLoggedIn }) {
               <Route exact path="/" element={<Home />}></Route>
               <Route exact path="/profile" element={<Profile />}></Route>
               <Route exact path="/add_listing" element={<AddSublet />}></Route>
+              <Route exact path="/get_listing" element={<Loader/>}></Route>
             </>
           ) : (
             <>

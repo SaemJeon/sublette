@@ -51,7 +51,6 @@ const Auth = () => {
     try {
       provider = new GoogleAuthProvider();
       const result = await signInWithPopup(authService, provider);
-      console.log(result);
       const credential = GoogleAuthProvider.credentialFromResult(result);
     }
     catch(error) {

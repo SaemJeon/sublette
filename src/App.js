@@ -4,7 +4,6 @@ import {authService} from "./fbase";
 import AppRouter from "./components/AppRouter";
 
 function App() {
-  console.log(authService);
   // State to save if user is logged in;
   const [init, setInit] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(authService.currentUser);
