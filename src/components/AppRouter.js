@@ -22,7 +22,7 @@ function AppRouter({ isLoggedIn }) {
               <Route exact path="/" element={<Home />}></Route>
               <Route exact path="/profile" element={<Profile />}></Route>
               <Route exact path="/add_listing" element={<AddSublet />}></Route>
-              <Route exact path="/get_listing" element={<Loader/>}></Route>
+              <Route exact path="/get_listing" element={<Loader />}></Route>
             </>
           ) : (
             <>
