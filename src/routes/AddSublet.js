@@ -17,8 +17,9 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
-import { addDoc, collection, setDoc, doc } from "firebase/firestore";
-import { dbService, authService } from "../fbase";
+import { addDoc, collection, setDoc, doc, updateDoc } from "firebase/firestore";
+import { dbService, authService, storage } from "../fbase";
+import { ref, uploadBytes } from "firebase/storage";
 
 const AddSublet = () => {
   const [fromDate, setFromDate] = useState(null);
@@ -45,11 +46,11 @@ const AddSublet = () => {
     debounce: 300,
   });
 
-  const ref = useOnclickOutside(() => {
-    // When user clicks outside of the component, we can dismiss
-    // the searched suggestions by calling this method
-    clearSuggestions();
-  });
+  // const ref = useOnclickOutside(() => {
+  //   // When user clicks outside of the component, we can dismiss
+  //   // the searched suggestions by calling this method
+  //   clearSuggestions();
+  // });
 
   const handleInput = (e) => {
     // Update the keyword of the input element
@@ -100,6 +101,7 @@ const AddSublet = () => {
     console.log(images);
     try {
       const uid = authService.currentUser.uid;
+
       const docRef = await addDoc(collection(dbService, "listings"), {
         value,
         price,
@@ -108,9 +110,23 @@ const AddSublet = () => {
         bedroom,
         bathroom,
         detail,
-        // images,
         uid,
       });
+
+      const docId = docRef.id;
+
+      for (let index = 0; index < images.length; index++) {
+        console.log(index);
+        const image = images[index];
+        try {
+          const imageRef = ref(storage, docId + "/" + image.name);
+          await uploadBytes(imageRef, image).then(() => {
+            console.log("uploaded");
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      }
     } catch (error) {
       console.log(error);
     }
