@@ -111,6 +111,7 @@ const AddSublet = () => {
         bathroom,
         detail,
         uid,
+        createdAt : Date.now(),
       });
 
       const docId = docRef.id;

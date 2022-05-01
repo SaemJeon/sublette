@@ -1,0 +1,17 @@
+.body {
+    background-color: whitesmoke
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.items {
+    justify-self: center;
+    margin: 0.5rem;
+    list-style-type: none;
+    text-decoration: none;
+    padding: 1rem;
+}

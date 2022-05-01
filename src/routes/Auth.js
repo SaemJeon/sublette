@@ -2,6 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 import { authService } from '../fbase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import styles from '../css/Auth.module.css'
+import Typewriter from 'typewriter-effect';
+
 
 const Auth = () => {
   // Email
@@ -59,17 +62,30 @@ const Auth = () => {
 }
 
   return (
-    <div>
-      <form onSubmit={clickedSubmit}>
-        <input name="email" type="text" placeholder='Enter your email' required value={email} onChange={onChange} />
-        <input name="passwd" type="password" placeholder='Password' required value={passwd} onChange={onChange}/>
+    <div className={styles.body}>
+      <div className={styles.title}>Sublette!</div>
+      <div className={styles.typewriter}>
+                        <Typewriter
+                        options={{
+                            strings: [
+                                'Tired of Searching Reddit for Summer sublets?',
+                                'Outdated Facebook Pages got you in despair?'
+                              ],
+                            autoStart: true,
+                            loop: true,
+                        }}
+                        />
+                    </div>
+      <form onSubmit={clickedSubmit} className={styles.form}>
+        <input name="email" type="text" placeholder='Enter your email' required value={email} onChange={onChange} className={styles.input}/>
+        <input name="passwd" type="password" placeholder='Password' required value={passwd} onChange={onChange} className={styles.input}/>
         <input type="submit" value = {newAccount? "Create Account" : "Sign In"}/> 
       </form>
       <div>
-        <button onClick={authWithGoogle}>Continue with Google</button>
+        <button onClick={authWithGoogle} className={styles.button}>Continue with Google</button>
       </div>
       <div>
-        <button onClick={toggleAccount}>{newAccount ? "Have an account?" : "First time user?"}</button>
+        <button onClick={toggleAccount} className={styles.button}>{newAccount ? "Have an account?" : "First time user?"}</button>
       </div>
       {errorBool ? <div>{errorMsg}</div> : <></>}
     </div>
