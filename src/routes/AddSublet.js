@@ -116,6 +116,7 @@ const AddSublet = () => {
         detail,
         geo,
         uid,
+        createdAt : Date.now(),
       });
 
       const docId = docRef.id;

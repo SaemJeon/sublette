@@ -1,30 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LogOut from "../components/LogOut.js";
+import styles from "../css/Navigation.module.css"
 
 function Navigation() {
   return (
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/profile">Profile</Link>
-        </li>
-        <li>
-          <Link to="/add_listing">Add Listing</Link>
-        </li>
-        <li>
-          <Link to="/get_listing">Get Listing</Link>
-        </li>
-        <li>
-          <Link to="/map">Map</Link>
-        </li>
-        <li>
+    <div className={styles.body}>
+      <div className={styles.container}>
+        <div  className={styles.items}>
+          <Link style={{"textDecoration": "none", "color" :"inherit"}}to="/">Home</Link>
+        </div>
+        <div className={styles.items}>
+          <Link style={{"textDecoration": "none", "color" :"inherit"}} to="/profile">Profile</Link>
+        </div>
+        <div className={styles.items}>
+          <Link style={{"textDecoration": "none", "color" :"inherit"}} to="/add_listing">Add listing</Link>
+        </div>
+        <div className={styles.items}>
+            <Link style={{"textDecoration": "none", "color" :"inherit"}} to="/get_listing">Get listing</Link>
+        </div>
+        <div className={styles.items}>
           <LogOut />
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   );
 }

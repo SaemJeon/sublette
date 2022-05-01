@@ -1,0 +1,44 @@
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: linear-gradient(grey, white, grey, white);
+}
+
+.title {
+    font-family:'Times New Roman', Times, serif;
+    font-style:italic;
+    margin: 3rem;
+    font-size: 4rem;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.input {
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0px 1px 3px 0px rgb(195, 188, 188);
+    border-radius: 1rem;
+}
+
+.button {
+    margin: 1rem;
+    border-radius: 1.5rem;
+    box-shadow: 0px 1px 3px 0px rgb(195, 188, 188);
+    padding: 1rem;
+}
+
+.typewriter {
+    font-family:'Times New Roman', Times, serif;
+    font-style: oblique;
+    color: rgb(129, 129, 160);
+    text-align: center;
+    font-size: 1.5rem;
+}

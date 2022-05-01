@@ -10,7 +10,7 @@ function LogOut() {
         navigate("/");
     }
   return (
-    <button onClick={logOutOnClick}>Log Out</button>
+    <div onClick={logOutOnClick}>Log Out</div>
   )
 }
 

@@ -9,7 +9,6 @@ import {
   HashRouter as Router,
   Route,
   Routes,
-  Redirect,
 } from "react-router-dom";
 import Navigation from "./Navigation.js";
 import Profile from "./Profile.js";
