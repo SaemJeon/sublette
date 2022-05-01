@@ -20,6 +20,9 @@ function Navigation() {
             <Link style={{"textDecoration": "none", "color" :"inherit"}} to="/get_listing">Get listing</Link>
         </div>
         <div className={styles.items}>
+            <Link style={{"textDecoration": "none", "color" :"inherit"}} to="/map">Map</Link>
+        </div>
+        <div className={styles.items}>
           <LogOut />
         </div>
       </div>
