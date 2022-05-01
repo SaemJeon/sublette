@@ -32,6 +32,7 @@ const AddSublet = () => {
   const [bathroom, setBathroom] = useState(1);
   const [detail, setDetail] = useState("");
   const [images, setImages] = useState([]);
+  const [geo, setGeo] = useState([]);
 
   const {
     ready,
@@ -70,6 +71,7 @@ const AddSublet = () => {
         .then((results) => getLatLng(results[0]))
         .then(({ lat, lng }) => {
           console.log("📍 Coordinates: ", { lat, lng });
+          setGeo([lat, lng]);
         })
         .catch((error) => {
           console.log("😱 Error: ", error);
@@ -99,6 +101,8 @@ const AddSublet = () => {
     console.log(bathroom);
     console.log(detail);
     console.log(images);
+    console.log(geo);
+
     try {
       const uid = authService.currentUser.uid;
 
@@ -110,6 +114,7 @@ const AddSublet = () => {
         bedroom,
         bathroom,
         detail,
+        geo,
         uid,
       });
 

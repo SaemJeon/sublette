@@ -1,6 +1,10 @@
 import React from "react";
 import Home from "../routes/Home.js";
 import Auth from "../routes/Auth.js";
+// import Message from "../routes/Message.js";
+import Map from "../routes/Map.js";
+// import App from "../routes/Temp.js";
+
 import {
   HashRouter as Router,
   Route,
@@ -23,7 +27,9 @@ function AppRouter({ isLoggedIn }) {
               <Route exact path="/" element={<Home />}></Route>
               <Route exact path="/profile" element={<Profile />}></Route>
               <Route exact path="/add_listing" element={<AddSublet />}></Route>
-              <Route exact path="/get_listing" element={<Loader/>}></Route>
+              <Route exact path="/get_listing" element={<Loader />}></Route>
+              {/* <Route exact path="/message" element={<App />}></Route> */}
+              <Route exact path="/map" element={<Map />}></Route>
             </>
           ) : (
             <>

@@ -16,7 +16,10 @@ function Navigation() {
           <Link to="/add_listing">Add Listing</Link>
         </li>
         <li>
-            <Link to="/get_listing">Get Listing</Link>
+          <Link to="/get_listing">Get Listing</Link>
+        </li>
+        <li>
+          <Link to="/map">Map</Link>
         </li>
         <li>
           <LogOut />
