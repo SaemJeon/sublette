@@ -20,19 +20,12 @@
     "axios": "^0.27.2",
     "date-fns": "^2.28.0",
     "firebase": "^9.7.0",
-    "gmap": "^1.0.1",
     "react": "^18.1.0",
     "react-cool-onclickoutside": "^1.7.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
-    "stream-chat": "^6.5.1",
-    "stream-chat-css": "^1.0.23",
-    "stream-chat-react": "^8.1.2",
-=======
     "typewriter-effect": "^2.18.2",
->>>>>>> 21676cb8daf116055043b0375480f753a6d091ae
     "use-places-autocomplete": "^2.0.0",
     "web-vitals": "^2.1.4"
   },
